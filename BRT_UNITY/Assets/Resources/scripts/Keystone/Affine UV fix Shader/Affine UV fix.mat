@@ -15,12 +15,11 @@ Material:
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
-      data:
-        first:
-          name: _MainTex
-        second:
-          m_Texture: {fileID: 8400000, guid: 395fc119b0d7de1418f941688cfd8dca, type: 2}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-    m_Floats: {}
-    m_Colors: {}
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 8400000, guid: 9b374aa53bc7146d2ba0a170a8272410, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
