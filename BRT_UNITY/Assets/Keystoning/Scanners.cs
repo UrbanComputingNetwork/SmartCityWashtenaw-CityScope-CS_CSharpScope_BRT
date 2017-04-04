@@ -91,6 +91,8 @@ public class Scanners : MonoBehaviour
 						}
 					}
 
+					// Check all rotations
+
 					if (idList.ContainsKey (key)) {
 						currentIds [i / _gridSize, j / _gridSize] = idList [key];
 					} else {
