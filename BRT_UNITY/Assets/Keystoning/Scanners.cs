@@ -38,11 +38,11 @@ public class Scanners : MonoBehaviour
 	public float _zDistance = 0;
 
 	// red, black, white, gray
-	private Vector3[] colors = new Vector3[] { new Vector3(1f, 0f, 0f), new Vector3(0f, 0f, 0f), new Vector3(1f, 1f, 1f), new Vector3(0.5f, 0.5f, 0.5f)};
+	private Vector3[] colors = new Vector3[] { new Vector3(1f, 0f, 0f), new Vector3(0.1f, 0.5f, 0.1f), new Vector3(1f, 1f, 0f), new Vector3(0.5f, 0.5f, 0.5f)};
 	private Texture2D hitTex;
 	private Dictionary<string, int> idList = new Dictionary<string, int>
 	{
-		{ "1111", 0 },
+		{ "0000", 0 },
 		{ "1111", 1 }, 
 		{ "2222", 2 },
 		{ "3333", 3 }, 
@@ -122,7 +122,7 @@ public class Scanners : MonoBehaviour
 			}
 			matrix += "\n";
 		}
-		Debug.Log (matrix);
+		//Debug.Log (matrix);
 	}
 
 	/// <summary>

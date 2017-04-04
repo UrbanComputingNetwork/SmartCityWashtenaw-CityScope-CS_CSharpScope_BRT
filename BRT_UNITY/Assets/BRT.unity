@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44053292, g: 0.48915, b: 0.569297, a: 1}
+  m_IndirectSpecularColor: {r: 0.44053274, g: 0.4891498, b: 0.56929654, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 55126583}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b07b7dbfbe434d67842650e6a2e8051, type: 3}
   m_Name: 
@@ -265,8 +265,8 @@ MonoBehaviour:
   _numOfScannersX: 2
   _numOfScannersY: 6
   _refreshRate: 1
-  _scannerScale: 1
-  _useWebcam: 0
+  _scannerScale: 0.5
+  _useWebcam: 1
   _showRays: 0
   xOffset: 0
   zOffset: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
   debug: 1
   _gridSize: 2
   _scannerY: 210
-  _zDistance: 10
+  _zDistance: 10.3
 --- !u!114 &55126590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,10 +287,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vertices:
-  - {x: -0.125, y: -0.4, z: 0}
-  - {x: -0.35, y: 0.3, z: 0}
-  - {x: 0.6, y: 0.35, z: 0}
-  - {x: 0.4, y: -0.38, z: 0}
+  - {x: -0.525, y: -0.45, z: 0}
+  - {x: -0.4, y: 0.3, z: 0}
+  - {x: 0.7, y: 0.3, z: 0}
+  - {x: 0.7, y: -0.53, z: 0}
   _useKeystone: 1
   selectedCorner: 1
 --- !u!1 &171931560
@@ -1388,9 +1388,19 @@ Prefab:
     - target: {fileID: 114000013934052532, guid: e257bf36ddd8a1c488b8b7e327095df5,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000010750335350, guid: e257bf36ddd8a1c488b8b7e327095df5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000010817059448, guid: e257bf36ddd8a1c488b8b7e327095df5,
+        type: 2}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 9b374aa53bc7146d2ba0a170a8272410, type: 2}
+    - target: {fileID: 81000010792188626, guid: e257bf36ddd8a1c488b8b7e327095df5,
         type: 2}
       propertyPath: m_Enabled
       value: 0
@@ -1398,38 +1408,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e257bf36ddd8a1c488b8b7e327095df5, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1449003329 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000013761539186, guid: e257bf36ddd8a1c488b8b7e327095df5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1449003328}
---- !u!114 &1449003330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1449003329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edf3a295bf60040a08cfaae7a6ae45c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1449003331 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000013232021656, guid: e257bf36ddd8a1c488b8b7e327095df5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1449003328}
---- !u!114 &1449003332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1449003331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edf3a295bf60040a08cfaae7a6ae45c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1477375537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1811,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1554172340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100.5138, y: 250, z: 0}
+  m_LocalPosition: {x: -202.9, y: 250, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
