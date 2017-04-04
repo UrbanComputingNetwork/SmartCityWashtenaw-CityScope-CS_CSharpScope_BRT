@@ -33,6 +33,10 @@ public class GridStateManager : MonoBehaviour
 		checkMarkerList ();
 	}
 
+	void Update() {
+		checkMarkerList ();
+	}
+
 	private void checkMarkerList ()
 	{
 		if (Scanners.currentIds.Length == 0) {

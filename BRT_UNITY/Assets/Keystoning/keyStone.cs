@@ -82,11 +82,6 @@ public class keyStone : MonoBehaviour
 
 	private void OnSceneControl ()
 	{
-		if (Input.anyKey)
-		{
-			Debug.Log(Input.inputString);
-		}
-
 		if (!_useKeystone)
 			return;
 

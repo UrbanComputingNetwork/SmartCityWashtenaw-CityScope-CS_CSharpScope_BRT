@@ -42,12 +42,12 @@ public class Scanners : MonoBehaviour
 	private Texture2D hitTex;
 	private Dictionary<string, int> idList = new Dictionary<string, int>
 	{
-		{ "1202", 0 },
-		{ "0101", 1 }, 
-		{ "1111", 3 },
-		{ "2222", 4 }, 
-		{ "1000", 5 },
-		{ "0111", 6 }, 
+		{ "1111", 0 },
+		{ "1111", 1 }, 
+		{ "2222", 2 },
+		{ "3333", 3 }, 
+		{ "1000", 4 },
+		{ "0111", 5 }, 
 
 	};
 
