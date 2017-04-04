@@ -41,7 +41,7 @@ public class GridStateManager : MonoBehaviour
 	{
 		if (Scanners.currentIds.Length == 0) {
 			StateMan (0);
-		} else if (Scanners.currentIds [0, 0] == 2 && Scanners.currentIds [0, 1] == -1) {
+		} else if (Scanners.currentIds [0, 0] == 1 && Scanners.currentIds [0, 2] == 1) {
 			StateMan (3);
 		} else if ((Scanners.currentIds [0, 1] == 4 && Scanners.currentIds [0, 0] == 2) || (Scanners.currentIds [0, 1] == 2 && Scanners.currentIds [0, 0] == 4)) {
 			StateMan (4);
