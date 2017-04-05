@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ResetScene : MonoBehaviour
 {
-
-	public float _resetAfterMinutes;
+    public float _resetAfterMinutes;
 
 	void Start ()
 	{
@@ -15,8 +14,8 @@ public class ResetScene : MonoBehaviour
 
 	IEnumerator resetThisScene ()
 	{
-		yield return new WaitForSeconds (_resetAfterMinutes * 60);
-		Scene scene = SceneManager.GetActiveScene ();
+		yield return new WaitForSeconds (_resetAfterMinutes );
+        Scene scene = SceneManager.GetActiveScene ();
 		SceneManager.LoadScene (scene.name);
 	}
 
