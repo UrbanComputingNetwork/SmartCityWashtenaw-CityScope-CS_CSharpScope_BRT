@@ -39,7 +39,7 @@ namespace UnityStandardAssets.Utility
 		private Vector3 P0;
 		private Vector3 P1;
 		private Vector3 P2;
-		private Vector3 P3;
+//		private Vector3 P3;
 
 		// Use this for initialization
 		private void Awake ()
@@ -106,7 +106,7 @@ namespace UnityStandardAssets.Utility
 				P0 = points [p0n];
 				P1 = points [p1n];
 				P2 = points [p2n];
-				P3 = points [p3n];
+			//	P3 = points [p3n];
 				if (waypointList.items [p1n].type == WaypointType.TURN) {
 					i = Mathf.InverseLerp (distances [p0n], distances [p2n], dist);
 					return Beziere (P0, P1, P2, i);
