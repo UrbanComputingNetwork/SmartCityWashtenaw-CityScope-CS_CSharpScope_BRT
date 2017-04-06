@@ -341,16 +341,16 @@ MonoBehaviour:
   _numOfScannersX: 2
   _numOfScannersY: 6
   _refreshRate: 1
-  _scannerScale: 0.5
+  _scannerScale: 1
   _useWebcam: 1
-  _showRays: 0
+  _showRays: 1
   xOffset: 0
   zOffset: 0
   refresh: 0
   debug: 0
   _gridSize: 2
-  _scannerY: 210
-  _zDistance: 10.3
+  _scannerY: 0
+  _zDistance: 10
 --- !u!124 &124099501544357858
 Behaviour:
   m_ObjectHideFlags: 1
