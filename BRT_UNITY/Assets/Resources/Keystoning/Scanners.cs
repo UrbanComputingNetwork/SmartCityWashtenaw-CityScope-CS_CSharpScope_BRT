@@ -77,9 +77,7 @@ public class Scanners : MonoBehaviour
 	
 		while (true) {
 
-			if (!refresh) {
-				yield return new WaitForEndOfFrame ();
-			}
+			yield return new WaitForEndOfFrame ();
 			setTexture ();
 			yield return new WaitForSeconds (_refreshRate);
 
@@ -188,8 +186,12 @@ public class Scanners : MonoBehaviour
 	private void setTexture ()
 	{
 		if (_useWebcam) {
-			_texture.SetPixels ((GetComponent<Renderer> ().material.mainTexture as WebCamTexture).GetPixels ()); //for webcam 
-		} else {
+     //     if (webcam.isPlaying)
+     //     {
+                _texture.SetPixels((GetComponent<Renderer>().material.mainTexture as WebCamTexture).GetPixels()); //for webcam 
+     //     }
+     //     else return;
+        } else {
 			_texture.SetPixels ((GetComponent<Renderer> ().material.mainTexture as Texture2D).GetPixels ()); // for texture map 
 		}
 		;

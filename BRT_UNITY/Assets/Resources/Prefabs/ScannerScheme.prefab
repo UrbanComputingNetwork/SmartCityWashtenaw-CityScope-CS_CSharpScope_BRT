@@ -309,12 +309,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vertices:
-  - {x: -0.35000014, y: -0.34000015, z: 0}
-  - {x: -0.2800001, y: 0.27999997, z: 0}
-  - {x: 0.68499994, y: 0.3, z: 0}
-  - {x: 0.66499996, y: -0.3199998, z: 0}
+  - {x: -0.35000014, y: -0.33500016, z: 0}
+  - {x: -0.30500007, y: 0.30999994, z: 0}
+  - {x: 0.68499994, y: 0.325, z: 0}
+  - {x: 0.67499995, y: -0.31499982, z: 0}
   _useKeystone: 1
-  selectedCorner: 0
+  selectedCorner: 1
 --- !u!114 &114433459062781008
 MonoBehaviour:
   m_ObjectHideFlags: 1
