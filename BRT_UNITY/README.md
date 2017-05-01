@@ -26,6 +26,16 @@ Keystoning
 
 Keystoning takes place in two separate instances of `keyStone.cs`, one attached to `ScannerScheme` and another one to `ProjectorsScheme`. 
 
+#### Scanners
+
+`keyStone.cs` essentially remaps the texture received from the webcam to the `CameraKeystoned` object's quad. This remapping also happens in the shader attached to the material associated with this `GameObject` called `KeystonedTexture`. Due to the shader's affine fix, the texture has to be grabbed from the screen, hence the extra pass through the `RenderTexture`.
+
+#### Projectors
+
+Similarly, `keyStone.cs` is included in the two projector `GameObjects` under `ProjectorsScheme`. `AffineFixQuadMonitor` 1 and 2 include a `keyStone.cs` copy called `AffineUVFix.cs`.
+
+
+
 Agents
 ---------------
 
