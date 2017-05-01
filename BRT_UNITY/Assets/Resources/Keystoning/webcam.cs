@@ -5,7 +5,6 @@ using UnityEngine;
 public class webcam : MonoBehaviour
 {
   	public static WebCamTexture webcamera;
-    public static bool isPlaying = false;
 
     void OnEnable()
     {
@@ -19,22 +18,28 @@ public class webcam : MonoBehaviour
     void Setup()
     {
         webcamera.Play(); // play camera
-        isPlaying = true;
         Renderer renderer = GetComponent<Renderer>();
         renderer.material.mainTexture = webcamera; //put cam tex onto quad
-        Debug.Log("Webcam assigned");
+        Debug.Log("Webcam assigned and playing: " + webcamera.isPlaying);
+
+        while (!isPlaying())
+        {
+            webcamera.Play();
+        }
+    }
+
+    public static bool isPlaying()
+    {
+        return webcamera.isPlaying;
     }
 
     public static void Pause()
     {
         webcamera.Pause();
-        isPlaying = false;
     }
 
     public static void Play()
     {
         webcamera.Play();
-        isPlaying = true;
 	}
-    
 }
