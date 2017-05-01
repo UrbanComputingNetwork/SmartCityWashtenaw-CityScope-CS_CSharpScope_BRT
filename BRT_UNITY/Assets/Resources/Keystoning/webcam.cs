@@ -9,8 +9,9 @@ public class webcam : MonoBehaviour
 
     void OnEnable()
     {
-
-        webcamera = new WebCamTexture (WebCamTexture.devices [0].name); //SET up the cam
+		string webcamName = WebCamTexture.devices [0].name;
+		webcamera = new WebCamTexture (webcamName); //SET up the cam
+		Debug.Log("Webcam texture set from " + webcamName);
 
         Setup();
     }
