@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class webcam : MonoBehaviour
 {
-//  public static WebCamTexture webcamera;
+  	public static WebCamTexture webcamera;
     public static bool isPlaying = false;
 
     void OnEnable()
     {
 
-        WebCamTexture webcamera = new WebCamTexture (WebCamTexture.devices [0].name); //SET up the cam
+        webcamera = new WebCamTexture (WebCamTexture.devices [0].name); //SET up the cam
 
-        // Setup();
-        webcamera.Play(); // play camera
-        isPlaying = true;
-        Renderer renderer = GetComponent<Renderer>();
-        renderer.material.mainTexture = webcamera; //put cam tex onto quad
-        Debug.Log("Webcam assigned");
+        Setup();
     }
-    /*
+    
     void Setup()
     {
         webcamera.Play(); // play camera
@@ -39,6 +34,6 @@ public class webcam : MonoBehaviour
     {
         webcamera.Play();
         isPlaying = true;
-    }
-    */
+	}
+    
 }

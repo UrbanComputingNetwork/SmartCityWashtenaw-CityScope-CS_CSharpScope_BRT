@@ -186,11 +186,11 @@ public class Scanners : MonoBehaviour
 	private void setTexture ()
 	{
 		if (_useWebcam) {
-     //     if (webcam.isPlaying)
-     //     {
+          if (webcam.isPlaying)
+          {
                 _texture.SetPixels((GetComponent<Renderer>().material.mainTexture as WebCamTexture).GetPixels()); //for webcam 
-     //     }
-     //     else return;
+          }
+          else return;
         } else {
 			_texture.SetPixels ((GetComponent<Renderer> ().material.mainTexture as Texture2D).GetPixels ()); // for texture map 
 		}
