@@ -15,13 +15,15 @@ public class ResetScene : MonoBehaviour
 	IEnumerator resetThisScene ()
 	{
 		yield return new WaitForSeconds (_resetAfterSeconds );
-        /*
-      webcam.Pause();
-      */
+       
+      	webcam.Pause();
+
         Scene scene = SceneManager.GetActiveScene ();
 		SceneManager.LoadScene (scene.name);
-        /*
-        webcam.Play(); */
+        
+        webcam.Play();
+
+		Debug.Log ("Reset scene.");
     }
 
 }
