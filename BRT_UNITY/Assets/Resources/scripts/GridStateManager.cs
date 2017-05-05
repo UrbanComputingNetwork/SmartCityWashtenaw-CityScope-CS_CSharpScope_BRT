@@ -27,6 +27,7 @@ public class GridStateManager : MonoBehaviour
 	}
 
     private StreetState currState = StreetState.ERROR;
+    private StreetState newState = StreetState.ERROR;
     private StreetState stateToDeploy;
 
     // Use this for initialization
@@ -51,11 +52,11 @@ public class GridStateManager : MonoBehaviour
         if (Scanners.currentIds.Length == 0) {
 			StateMan (StreetState.ERROR);
 		} 
-		else if (Scanners.currentIds[0, 0] == 0 && Scanners.currentIds[0, 2] == 0 && Scanners.currentIds [0, 1] == -1)
+		else if (Scanners.currentIds[0, 0] == 0 && Scanners.currentIds[0, 2] == 0 && Scanners.currentIds [0, 1] != 2)
 		{
 			StateMan (StreetState.CURRENT_STREET);
 		}
-		else if (Scanners.currentIds [0, 0] == 1 && Scanners.currentIds [0, 2] == 1 && Scanners.currentIds [0, 1] == -1)
+		else if (Scanners.currentIds [0, 0] == 1 && Scanners.currentIds [0, 2] == 1 && Scanners.currentIds [0, 1] != 2)
         {
 			StateMan (StreetState.GOLD_BRT);
 		}
@@ -63,7 +64,7 @@ public class GridStateManager : MonoBehaviour
         {
 			StateMan(StreetState.GOLD_BRT_BIKE);
         }
-		else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == -1 && Scanners.currentIds [0, 2] == -1)
+		else if (Scanners.currentIds[0, 1] == 2 && (Scanners.currentIds[0, 0] != Scanners.currentIds [0, 2]))
         {
 			StateMan(StreetState.SILVER_BRT);
         }
@@ -78,8 +79,19 @@ public class GridStateManager : MonoBehaviour
 	private void StateMan (StreetState stateToDeploy)
 	{
         if (currState == stateToDeploy) return;
-
-        if (counter < 20)
+        if (counter == 0)
+        {
+            newState = stateToDeploy;
+            counter++;
+            return;
+        }
+        else if (stateToDeploy != newState)
+        {
+            counter = 0;
+            return;
+        }
+            
+        else if (counter < 20)
         {
             counter++;
             return;
