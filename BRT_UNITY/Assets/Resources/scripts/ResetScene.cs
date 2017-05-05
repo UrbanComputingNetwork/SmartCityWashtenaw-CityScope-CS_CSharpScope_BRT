@@ -16,14 +16,19 @@ public class ResetScene : MonoBehaviour
 	{
 		yield return new WaitForSeconds (_resetAfterSeconds );
        
-      	webcam.Pause();
+      	webcam.Stop();
 
         Scene scene = SceneManager.GetActiveScene ();
 		SceneManager.LoadScene (scene.name);
         
-        webcam.Play();
+       // webcam.Play();
 
 		Debug.Log ("Reset scene.");
     }
 
+    void OnApplicationQuit()
+    {
+        Debug.Log("Quitting.");
+        webcam.Stop();
+    }
 }

@@ -17,15 +17,10 @@ public class webcam : MonoBehaviour
     
     void Setup()
     {
-        webcamera.Play(); // play camera
+        Play(); // play camera
         Renderer renderer = GetComponent<Renderer>();
         renderer.material.mainTexture = webcamera; //put cam tex onto quad
         Debug.Log("Webcam assigned and playing: " + webcamera.isPlaying);
-
-        while (!isPlaying())
-        {
-            webcamera.Play();
-        }
     }
 
     public static bool isPlaying()
@@ -40,6 +35,16 @@ public class webcam : MonoBehaviour
 
     public static void Play()
     {
-        webcamera.Play();
-	}
+        int counter = 0;
+        while (!isPlaying() && counter < 50)
+        {
+            webcamera.Play();
+            counter++;
+        }
+    }
+
+    public static void Stop()
+    {
+        webcamera.Stop();
+    }
 }
