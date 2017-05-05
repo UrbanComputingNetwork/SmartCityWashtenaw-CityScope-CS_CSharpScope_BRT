@@ -19,14 +19,6 @@ public class GridStateManager : MonoBehaviour
 	//public static int[,] Scanners.currentIds;
     // red 0  white 1  black 2 
 
-	private string[] stateNames = {
-		"Error",
-		"CurrentStreet",
-		"GoldBRT",
-		"SilverBRT",
-		"GoldBRT & Bike"
-	};
-
 	enum StreetState { 
 		ERROR, 
 		CURRENT_STREET,
@@ -56,19 +48,20 @@ public class GridStateManager : MonoBehaviour
 
         if (Scanners.currentIds.Length == 0) {
 			StateMan (StreetState.ERROR);
-		} else if (Scanners.currentIds [0, 0] == 1 && Scanners.currentIds [0, 2] == 1)
+		} 
+		else if (Scanners.currentIds[0, 0] == 0 && Scanners.currentIds[0, 2] == 0 && Scanners.currentIds [0, 1] == -1)
+		{
+			StateMan (StreetState.CURRENT_STREET);
+		}
+		else if (Scanners.currentIds [0, 0] == 1 && Scanners.currentIds [0, 2] == 1 && Scanners.currentIds [0, 1] == -1)
         {
 			StateMan (StreetState.GOLD_BRT);
 		}
-        else if (Scanners.currentIds[0, 0] == 0 && Scanners.currentIds[0, 2] == 0)
-        {
-			StateMan (StreetState.CURRENT_STREET);
-		}
-        else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == 0)
+		else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == 0 && Scanners.currentIds [0, 2] == -1)
         {
 			StateMan(StreetState.GOLD_BRT_BIKE);
         }
-        else if (Scanners.currentIds[0, 1] == 2)
+		else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == -1 && Scanners.currentIds [0, 2] == -1)
         {
 			StateMan(StreetState.SILVER_BRT);
         }

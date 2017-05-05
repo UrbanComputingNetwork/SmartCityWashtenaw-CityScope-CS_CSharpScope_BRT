@@ -47,14 +47,12 @@ public class Scanners : MonoBehaviour
 	};
 	
 	private Texture2D hitTex;
-	private Dictionary<string, int> idList = new Dictionary<string, int> {
+
+	private Dictionary<string, Colors> idList = new Dictionary<string, int> {
 		{ "0000", 0 },
 		{ "1111", 1 }, 
 		{ "2222", 2 },
-		{ "3333", 3 }, 
-		{ "1000", 4 },
-		{ "0111", 5 }, 
-
+		{ "3333", 3 }
 	};
 
 	IEnumerator Start ()
