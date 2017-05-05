@@ -27,6 +27,14 @@ public class GridStateManager : MonoBehaviour
 		"GoldBRT & Bike"
 	};
 
+	enum StreetState { 
+		ERROR, 
+		CURRENT_STREET,
+		GOLD_BRT,
+		SILVER_BRT,
+		GOLD_BRT_BIKE
+	}
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -47,32 +55,32 @@ public class GridStateManager : MonoBehaviour
         }
 
         if (Scanners.currentIds.Length == 0) {
-			StateMan (0);
+			StateMan (StreetState.ERROR);
 		} else if (Scanners.currentIds [0, 0] == 1 && Scanners.currentIds [0, 2] == 1)
         {
-			StateMan (2);
+			StateMan (StreetState.GOLD_BRT);
 		}
         else if (Scanners.currentIds[0, 0] == 0 && Scanners.currentIds[0, 2] == 0)
         {
-			StateMan (1);
+			StateMan (StreetState.CURRENT_STREET);
 		}
         else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == 0)
         {
-            StateMan(4);
+			StateMan(StreetState.GOLD_BRT_BIKE);
         }
         else if (Scanners.currentIds[0, 1] == 2)
         {
-            StateMan(3);
+			StateMan(StreetState.SILVER_BRT);
         }
         
         else {
-			StateMan (0);
+			StateMan (StreetState.ERROR);
 		}
 			
 	}
 
 
-	private void StateMan (int stateToDeploy)
+	private void StateMan (StreetState stateToDeploy)
 	{
         if (currState == stateToDeploy) return;
 
