@@ -12,8 +12,7 @@ public class GridStateManager : MonoBehaviour
 	private GameObject stateHolder;
 	// parent
 	private GameObject gameObjClone;
-	private int stateToDeploy;
-    private int currState = 0;
+    
     private int counter = 0;
 
 	//public static int[,] Scanners.currentIds;
@@ -27,8 +26,11 @@ public class GridStateManager : MonoBehaviour
 		GOLD_BRT_BIKE
 	}
 
-	// Use this for initialization
-	void Start ()
+    private StreetState currState = StreetState.ERROR;
+    private StreetState stateToDeploy;
+
+    // Use this for initialization
+    void Start ()
 	{
 		stateHolder = new GameObject ("state holder");
 		checkMarkerList ();
@@ -90,7 +92,7 @@ public class GridStateManager : MonoBehaviour
 			GameObject.Destroy (child.gameObject);
 		}
 
-		GameObject gameObjClone = (GameObject)Instantiate (states [stateToDeploy], transform.position, transform.rotation);
+		GameObject gameObjClone = (GameObject)Instantiate (states [(int)(stateToDeploy)], transform.position, transform.rotation);
 		gameObjClone.transform.parent = stateHolder.transform;
 	}
 		
