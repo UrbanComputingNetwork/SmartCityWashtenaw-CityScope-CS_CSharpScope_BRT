@@ -47,14 +47,12 @@ public class Scanners : MonoBehaviour
 	};
 	
 	private Texture2D hitTex;
+
 	private Dictionary<string, int> idList = new Dictionary<string, int> {
 		{ "0000", 0 },
 		{ "1111", 1 }, 
 		{ "2222", 2 },
-		{ "3333", 3 }, 
-		{ "1000", 4 },
-		{ "0111", 5 }, 
-
+		{ "3333", 3 }
 	};
 
 	IEnumerator Start ()
@@ -65,21 +63,13 @@ public class Scanners : MonoBehaviour
 
 		// Find copy mesh with RenderTexture
 		keystonedQuad = GameObject.Find ("KeystonedTextureQuad");
-		if (!keystonedQuad) {
-			Debug.Log ("Keystoned quad not found.");
-		} else {
-			Debug.Log ("Keystoned quad's position: " + keystonedQuad.transform.position.x);
-			Debug.Log ("Grid position: " + _gridParent.transform.position.x);
-		}
 
 		_texture = new Texture2D (GetComponent<Renderer> ().material.mainTexture.width, 
 			GetComponent<Renderer> ().material.mainTexture.height);
 	
 		while (true) {
 
-			if (!refresh) {
-				yield return new WaitForEndOfFrame ();
-			}
+			yield return new WaitForEndOfFrame ();
 			setTexture ();
 			yield return new WaitForSeconds (_refreshRate);
 
@@ -188,11 +178,15 @@ public class Scanners : MonoBehaviour
 	private void setTexture ()
 	{
 		if (_useWebcam) {
-			_texture.SetPixels ((GetComponent<Renderer> ().material.mainTexture as WebCamTexture).GetPixels ()); //for webcam 
-		} else {
+          if (webcam.isPlaying())
+          {
+                _texture.SetPixels((GetComponent<Renderer>().material.mainTexture as WebCamTexture).GetPixels()); //for webcam 
+          }
+          else return;
+        } else {
 			_texture.SetPixels ((GetComponent<Renderer> ().material.mainTexture as Texture2D).GetPixels ()); // for texture map 
 		}
-		;
+		
 		_texture.Apply ();
 	}
 

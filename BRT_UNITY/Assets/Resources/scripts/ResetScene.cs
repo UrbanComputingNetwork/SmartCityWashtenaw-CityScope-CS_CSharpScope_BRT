@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ResetScene : MonoBehaviour
 {
-    public float _resetAfterMinutes;
+    public float _resetAfterSeconds;
 
 	void Start ()
 	{
@@ -14,9 +14,21 @@ public class ResetScene : MonoBehaviour
 
 	IEnumerator resetThisScene ()
 	{
-		yield return new WaitForSeconds (_resetAfterMinutes );
+		yield return new WaitForSeconds (_resetAfterSeconds );
+       
+      	webcam.Stop();
+
         Scene scene = SceneManager.GetActiveScene ();
 		SceneManager.LoadScene (scene.name);
-	}
+        
+       // webcam.Play();
 
+		Debug.Log ("Reset scene.");
+    }
+
+    void OnApplicationQuit()
+    {
+        Debug.Log("Quitting.");
+        webcam.Stop();
+    }
 }

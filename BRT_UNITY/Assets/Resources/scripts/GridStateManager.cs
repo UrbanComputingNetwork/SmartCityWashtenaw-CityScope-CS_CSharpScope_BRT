@@ -12,23 +12,26 @@ public class GridStateManager : MonoBehaviour
 	private GameObject stateHolder;
 	// parent
 	private GameObject gameObjClone;
-	private int stateToDeploy;
-    private int currState = 0;
+    
     private int counter = 0;
 
 	//public static int[,] Scanners.currentIds;
     // red 0  white 1  black 2 
 
-	private string[] stateNames = {
-		"Error",
-		"CurrentStreet",
-		"GoldBRT",
-		"SilverBRT",
-		"GoldBRT & Bike"
-	};
+	enum StreetState { 
+		ERROR, 
+		CURRENT_STREET,
+		GOLD_BRT,
+		SILVER_BRT,
+		GOLD_BRT_BIKE
+	}
 
-	// Use this for initialization
-	void Start ()
+    private StreetState currState = StreetState.ERROR;
+    private StreetState newState = StreetState.ERROR;
+    private StreetState stateToDeploy;
+
+    // Use this for initialization
+    void Start ()
 	{
 		stateHolder = new GameObject ("state holder");
 		checkMarkerList ();
@@ -47,36 +50,48 @@ public class GridStateManager : MonoBehaviour
         }
 
         if (Scanners.currentIds.Length == 0) {
-			StateMan (0);
-		} else if (Scanners.currentIds [0, 0] == 1 && Scanners.currentIds [0, 2] == 1)
-        {
-			StateMan (2);
+			StateMan (StreetState.ERROR);
+		} 
+		else if (Scanners.currentIds[0, 0] == 0 && Scanners.currentIds[0, 2] == 0 && Scanners.currentIds [0, 1] != 2)
+		{
+			StateMan (StreetState.CURRENT_STREET);
 		}
-        else if (Scanners.currentIds[0, 0] == 0 && Scanners.currentIds[0, 2] == 0)
+		else if (Scanners.currentIds [0, 0] == 1 && Scanners.currentIds [0, 2] == 1 && Scanners.currentIds [0, 1] != 2)
         {
-			StateMan (1);
+			StateMan (StreetState.GOLD_BRT);
 		}
-        else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == 0)
+		else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == 0 && Scanners.currentIds [0, 2] == -1)
         {
-            StateMan(4);
+			StateMan(StreetState.GOLD_BRT_BIKE);
         }
-        else if (Scanners.currentIds[0, 1] == 2)
+		else if (Scanners.currentIds[0, 1] == 2 && (Scanners.currentIds[0, 0] != Scanners.currentIds [0, 2]))
         {
-            StateMan(3);
+			StateMan(StreetState.SILVER_BRT);
         }
         
         else {
-			StateMan (0);
+			StateMan (StreetState.ERROR);
 		}
 			
 	}
 
 
-	private void StateMan (int stateToDeploy)
+	private void StateMan (StreetState stateToDeploy)
 	{
         if (currState == stateToDeploy) return;
-
-        if (counter < 20)
+        if (counter == 0)
+        {
+            newState = stateToDeploy;
+            counter++;
+            return;
+        }
+        else if (stateToDeploy != newState)
+        {
+            counter = 0;
+            return;
+        }
+            
+        else if (counter < 20)
         {
             counter++;
             return;
@@ -89,7 +104,7 @@ public class GridStateManager : MonoBehaviour
 			GameObject.Destroy (child.gameObject);
 		}
 
-		GameObject gameObjClone = (GameObject)Instantiate (states [stateToDeploy], transform.position, transform.rotation);
+		GameObject gameObjClone = (GameObject)Instantiate (states [(int)(stateToDeploy)], transform.position, transform.rotation);
 		gameObjClone.transform.parent = stateHolder.transform;
 	}
 		
