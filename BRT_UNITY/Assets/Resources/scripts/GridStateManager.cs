@@ -60,7 +60,7 @@ public class GridStateManager : MonoBehaviour
         {
 			StateMan (StreetState.GOLD_BRT);
 		}
-		else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == 0 && Scanners.currentIds [0, 2] == -1)
+		else if (Scanners.currentIds[0, 1] == 2 && Scanners.currentIds[0, 0] == 0 && Scanners.currentIds [0, 2] != 0)
         {
 			StateMan(StreetState.GOLD_BRT_BIKE);
         }
