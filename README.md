@@ -1,7 +1,8 @@
-# BRT Street Simulation in Boston (Barr Foundation+DUSP+CPG)
-BRT Street Scale simulation using Unity, JSON 
+# BRT Street Simulation in Boston (Barr Foundation+DUSP+CS)
+BRT Street Scale simulation using Unity3d 
 
 _________
+
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=lFXMshEGBSk
 " target="_blank"><img src="http://img.youtube.com/vi/lFXMshEGBSk/3.jpg" 
